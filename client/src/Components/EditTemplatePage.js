@@ -12,7 +12,7 @@ export default function EditTemplatePage() {
   const { templateId } = useParams();
   const [templateData, setTemplateData] = useState([]);
   const navigate = useNavigate();
-  const url = "http://localhost:8000";
+  const url = "https://resume-builder-backend-1qao.onrender.com";
 
 
   const getTemplate = async () => {
