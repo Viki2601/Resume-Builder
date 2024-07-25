@@ -20,6 +20,7 @@ export default function WhiteandBeigeSimpleStudentCVResume({ data }) {
     const [previewImage, setPreviewImage] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const url = "https://resume-builder-server-ea28.onrender.com";
 
 
 
@@ -113,7 +114,7 @@ export default function WhiteandBeigeSimpleStudentCVResume({ data }) {
             formDataToSend.append("skills", JSON.stringify(skills));
             formDataToSend.append("languages", JSON.stringify(languages));
 
-            await axios.post('http://localhost:8000/saveToDownload', formDataToSend, {
+            await axios.post(`${url}/saveToDownload`, formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -227,7 +228,7 @@ export default function WhiteandBeigeSimpleStudentCVResume({ data }) {
                             <div className='w-full px-10 py-8 flex flex-col justify-center items-center gap-y-2'>
                                 <div>
                                     <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className='relative w-28 flex justify-center items-center rounded-lg border-2 border-gray-900'>
-                                        <img className="rounded-lg w-28 h-28 object-cover" src={previewImage || `http://localhost:8000/${formData.profileImg}`} />
+                                        <img className="rounded-lg w-28 h-28 object-cover" src={previewImage || `${url}/${formData.profileImg}`} />
                                         {isHovered && (
                                             <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center rounded-lg">
                                                 <label htmlFor="file-input" className="font-bold uppercase text-sm text-gray-100 cursor-pointer">
