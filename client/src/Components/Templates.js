@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Templates() {
   const [email] = useState(Cookies.get('email'));
-  const url = "http://localhost:8000";
+  const url = "https://resume-builder-backend-1qao.onrender.com";
   const [templates, setTemplates] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All categories");
   const [dropdownOpen, setDropdownOpen] = useState(false);
