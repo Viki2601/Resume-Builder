@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 
 export default function Signup() {
     const navigate = useNavigate();
-    const url = "http://localhost:8000";
+    const url = "https://resume-builder-backend-1qao.onrender.com";
     const [form, setForm] = useState({
         name: '',
         email: '',
