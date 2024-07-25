@@ -21,6 +21,7 @@ export default function GreyCleanCVResume({ data }) {
     const [previewImage, setPreviewImage] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const url = "https://resume-builder-server-ea28.onrender.com";
 
 
 
@@ -127,7 +128,7 @@ export default function GreyCleanCVResume({ data }) {
             formDataToSend.append("experiences", JSON.stringify(experiences));
             formDataToSend.append("skills", JSON.stringify(skills));
 
-            await axios.post('http://localhost:8000/saveToDownload', formDataToSend, {
+            await axios.post(`${url}/saveToDownload`, formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -260,7 +261,7 @@ export default function GreyCleanCVResume({ data }) {
                             </div>
                             <div className="w-1/4 relative">
                                 <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className="relative w-36 flex justify-center items-center mb-4">
-                                    <img className="rounded-full w-36 h-36 object-cover" src={previewImage || `http://localhost:8000/${formData.profileImg}`} />
+                                    <img className="rounded-full w-36 h-36 object-cover" src={previewImage || `${url}/${formData.profileImg}`} />
                                     {isHovered && (
                                         <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center rounded-full">
                                             <label htmlFor="file-input" className="font-bold uppercase text-sm text-gray-100 cursor-pointer">
