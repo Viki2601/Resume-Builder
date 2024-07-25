@@ -12,7 +12,7 @@ export default function ForgotPassword() {
     const [showPopup, setShowPopup] = useState(false);
     const [otpValue, setOtpValue] = useState(null);
     const digits = '0123456789';
-    const url = "https://resume-builder-backend-1qao.onrender.com";
+    const url = "https://resume-builder-server-ea28.onrender.com";
 
 
     const handleOtpChange = (event) => {
