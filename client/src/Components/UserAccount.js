@@ -8,7 +8,7 @@ import { FaStar } from 'react-icons/fa';
 
 export default function UserAccount() {
     const [isOpen, setIsOpen] = useState(false);
-    const url = "http://localhost:8000";
+    const url = "https://resume-builder-backend-1qao.onrender.com";
     const [profileMenu, setProfileMenu] = useState(true);
     const [savedTemplateMenu, setSavedTemplateMenu] = useState(false);
     const [settingsMenu, setSettingsMenu] = useState(false);
