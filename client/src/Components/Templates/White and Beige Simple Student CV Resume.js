@@ -422,52 +422,46 @@ export default function WhiteandBeigeSimpleStudentCVResume({ data }) {
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 contentLabel="Template Preview"
-                className="fixed inset-0 flex flex-col items-center justify-center left-3/4 z-50"
+                className="fixed inset-0 flex items-center lg:left-3/4 justify-center z-50"
                 overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-40"
             >
-                <div className="bg-white rounded-l-lg p-6 max-w-sm w-full h-full mx-4 overflow-x-auto">
+                <div className="bg-white rounded-lg lg:rounded-r-none p-6 w-full max-w-md md:max-w-md lg:max-w-md mx-4 lg:mx-0 lg:h-full overflow-y-auto">
                     <div className="flex justify-end items-center pb-4">
-                        <MdClear onClick={closeModal} className="text-2xl text-gray-500 hover:text-gray-700" />
+                        <MdClear onClick={closeModal} className="text-2xl text-gray-500 hover:text-gray-700 cursor-pointer" />
                     </div>
-                    <div className='flex pb-4'>
-                        <div className='w-full flex flex-col gap-2'>
+                    <div className='flex flex-col gap-4'>
+                        {/* Title of Template in Preview section */}
+                        <h2 className="text-xl md:text-2xl font-bold">{data.title}</h2>
 
-                            {/* Title of Template in Preview section */}
-                            <h2 className="text-2xl font-bold font-nunito">{data.title}</h2>
-
-                            {/* Preview of the edited template */}
-                            <div></div>
-
-                            {/* Downloadable buttons (In variations) section */}
-                            <button onClick={downloadAsJPG} className='w-full p-3 rounded-md flex items-center gap-3 hover:bg-gray-200'>
-                                <CiImageOn className='text-cyan-600 text-2xl' />
-                                <div className='flex flex-col items-start'>
-                                    <h2 className="text-md font-medium text-gray-600">JPG</h2>
-                                    <p className='text-xs text-gray-500 font-medium'>Best for sharing</p>
-                                </div>
-                            </button>
-                            <button onClick={downloadAsPNG} className='w-full p-3 rounded-md flex items-center gap-3 hover:bg-gray-200'>
-                                <CiImageOn className='text-cyan-600 text-2xl' />
-                                <div className='flex flex-col items-start'>
-                                    <h2 className="text-md font-medium text-gray-600">PNG</h2>
-                                    <p className='text-xs text-gray-500 font-medium'>Best for complex images, illustratiions</p>
-                                </div>
-                            </button>
-                            <button onClick={downloadAsPDF} className='w-full p-3 rounded-md flex items-center gap-3 hover:bg-gray-200'>
-                                <BsFiletypePdf className='text-cyan-600 text-2xl' />
-                                <div className='flex flex-col items-start'>
-                                    <h2 className="text-md font-medium text-gray-600">PDF Standard</h2>
-                                    <p className='text-xs text-gray-500 font-medium'>Best for documents (and emailing)</p>
-                                </div>
-                            </button>
-                            <button onClick={downloadAsSVG} className='w-full p-3 rounded-md flex items-center gap-3 hover:bg-gray-200'>
-                                <CiImageOn className='text-cyan-600 text-2xl' />
-                                <div className='flex flex-col items-start'>
-                                    <h2 className="text-md font-medium text-gray-600">SVG</h2>
-                                    <p className='text-xs text-gray-500 font-medium'>Best for web design and animation</p>
-                                </div>
-                            </button>
-                        </div>
+                        {/* Downloadable buttons (In variations) section */}
+                        <button onClick={downloadAsJPG} className='w-full p-3 rounded-md flex items-center gap-3 hover:bg-gray-200'>
+                            <CiImageOn className='text-cyan-600 text-2xl' />
+                            <div className='flex flex-col items-start'>
+                                <h2 className="text-md font-medium text-gray-600">JPG</h2>
+                                <p className='text-xs text-gray-500 font-medium'>Best for sharing</p>
+                            </div>
+                        </button>
+                        <button onClick={downloadAsPNG} className='w-full p-3 rounded-md flex items-center gap-3 hover:bg-gray-200'>
+                            <CiImageOn className='text-cyan-600 text-2xl' />
+                            <div className='flex flex-col items-start'>
+                                <h2 className="text-md font-medium text-gray-600">PNG</h2>
+                                <p className='text-xs text-gray-500 font-medium'>Best for complex images, illustrations</p>
+                            </div>
+                        </button>
+                        <button onClick={downloadAsPDF} className='w-full p-3 rounded-md flex items-center gap-3 hover:bg-gray-200'>
+                            <BsFiletypePdf className='text-cyan-600 text-2xl' />
+                            <div className='flex flex-col items-start'>
+                                <h2 className="text-md font-medium text-gray-600">PDF Standard</h2>
+                                <p className='text-xs text-gray-500 font-medium'>Best for documents (and emailing)</p>
+                            </div>
+                        </button>
+                        <button onClick={downloadAsSVG} className='w-full p-3 rounded-md flex items-center gap-3 hover:bg-gray-200'>
+                            <CiImageOn className='text-cyan-600 text-2xl' />
+                            <div className='flex flex-col items-start'>
+                                <h2 className="text-md font-medium text-gray-600">SVG</h2>
+                                <p className='text-xs text-gray-500 font-medium'>Best for web design and animation</p>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </Modal>
