@@ -32,11 +32,9 @@ export default function Navbar() {
     }, [cookieVal]);
 
     const defaultPicture = (
-        <img
-            src="https://logodix.com/logo/248174.jpg"
-            alt="Profile"
-            className="rounded-full w-12 h-12 object-cover"
-        />
+        <div className="bg-gradient-to-br from-zinc-400 to-white text-gray-700 text-3xl font-bold font-raleway rounded-full w-12 h-12 flex items-center justify-center">
+            {userDetails?.name?.at(0) ?? 'U'}
+        </div>
     );
 
     const profilePicture = userDetails.profilePictureUrl ? (
