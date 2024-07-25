@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 
 export default function Navbar() {
     const [cookieVal] = useState(Cookies.get('email'));
-    const url = "https://resume-builder-backend-1qao.onrender.com";
+    const url = "https://resume-builder-server-ea28.onrender.com";
     const [userDetails, setUserDetails] = useState({ name: '', profilePictureUrl: '' });
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
