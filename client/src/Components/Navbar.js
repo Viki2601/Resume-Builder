@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 
 export default function Navbar() {
     const [cookieVal] = useState(Cookies.get('email'));
+    const url = "http://localhost:8000";
     const [userDetails, setUserDetails] = useState({ name: '', profilePictureUrl: '' });
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,7 +16,7 @@ export default function Navbar() {
 
     const user = async () => {
         try {
-            await axios.post("http://localhost:8000/userAccount", { cookieVal })
+            await axios.post(`${url}/userAccount`, { cookieVal })
                 .then(res => {
                     setUserDetails(res.data);
                 }).catch(e => {
@@ -38,7 +39,7 @@ export default function Navbar() {
 
     const profilePicture = userDetails.profilePictureUrl ? (
         <img
-            src={`http://localhost:8000/uploads/${userDetails.profilePictureUrl}`}
+            src={`${url}/uploads/${userDetails.profilePictureUrl}`}
             alt="Profile"
             className="rounded-full w-12 h-12 object-cover"
         />

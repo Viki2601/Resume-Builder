@@ -12,10 +12,12 @@ export default function EditTemplatePage() {
   const { templateId } = useParams();
   const [templateData, setTemplateData] = useState([]);
   const navigate = useNavigate();
+  const url = "http://localhost:8000";
+
 
   const getTemplate = async () => {
     try {
-      const res = await axios.post(`http://localhost:8000/getTemplateById/${templateId}`);
+      const res = await axios.post(`${url}/getTemplateById/${templateId}`);
       if (res.status === 200) {
         setTemplateData(res.data);
       }

@@ -8,6 +8,7 @@ import { FaStar } from 'react-icons/fa';
 
 export default function UserAccount() {
     const [isOpen, setIsOpen] = useState(false);
+    const url = "http://localhost:8000";
     const [profileMenu, setProfileMenu] = useState(true);
     const [savedTemplateMenu, setSavedTemplateMenu] = useState(false);
     const [settingsMenu, setSettingsMenu] = useState(false);
@@ -46,7 +47,7 @@ export default function UserAccount() {
 
     const user = async () => {
         try {
-            await axios.post("http://localhost:8000/userAccount", { cookieVal })
+            await axios.post(`${url}/userAccount`, { cookieVal })
                 .then(res => {
                     setUserDetails(res.data);
                 }).catch(e => {
@@ -69,7 +70,7 @@ export default function UserAccount() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/updateAccount', formData, {
+            const response = await axios.post(`${url}/updateAccount`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -89,7 +90,7 @@ export default function UserAccount() {
 
     const getStarredTemplates = async () => {
         try {
-            await axios.post("http://localhost:8000/getStarredTemplates", { cookieVal })
+            await axios.post(`${url}/getStarredTemplates`, { cookieVal })
                 .then(res => {
                     setStarredTemplate(res.data);
                 }).catch(e => {
@@ -150,7 +151,7 @@ export default function UserAccount() {
                             {starredTemplate.length > 0 ? (
                                 starredTemplate.map(template => (
                                     <div key={template._id} className='w-full lg:h-[420px] rounded-md overflow-hidden border shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg relative'>
-                                        <img src={`http://localhost:8000/${template.template.imageUrl}`} alt={template.template.title} className='w-full h-full object-cover' />
+                                        <img src={`${url}/${template.template.imageUrl}`} alt={template.template.title} className='w-full h-full object-cover' />
                                         <div className='absolute top-4 right-4 w-8 h-8 rounded-md flex items-center justify-center bg-transparent cursor-pointer opacity-100 transition-opacity duration-300'>
                                             <FaStar className='text-xl text-cyan-700' />
                                         </div>
@@ -179,7 +180,7 @@ export default function UserAccount() {
                                         {previewImage ? (
                                             <img className="rounded-full object-cover w-16 h-16 border" src={previewImage} alt="Profile" />
                                         ) : (
-                                            <img className="rounded-full object-cover w-16 h-16 border" src={`http://localhost:8000/${userDetails.profilePictureUrl}`} alt="Profile" />
+                                            <img className="rounded-full object-cover w-16 h-16 border" src={`${url}/${userDetails.profilePictureUrl}`} alt="Profile" />
                                         )}
                                     </div>
                                     <div className="flex justify-center items-center">

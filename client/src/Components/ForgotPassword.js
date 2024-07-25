@@ -12,6 +12,8 @@ export default function ForgotPassword() {
     const [showPopup, setShowPopup] = useState(false);
     const [otpValue, setOtpValue] = useState(null);
     const digits = '0123456789';
+    const url = "http://localhost:8000";
+
 
     const handleOtpChange = (event) => {
         setOtpValue(event.target.value);
@@ -26,7 +28,7 @@ export default function ForgotPassword() {
             }
             setOtp(otp);
 
-            const response = await axios.post("http://localhost:8000/sendemail", { email, otp });
+            const response = await axios.post(`${url}/sendemail`, { email, otp });
             if (response.data === "pass") {
                 toast.success("OTP sent to your Email");
                 setShowPopup(true);

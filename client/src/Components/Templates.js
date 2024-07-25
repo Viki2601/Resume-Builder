@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Templates() {
   const [email] = useState(Cookies.get('email'));
+  const url = "http://localhost:8000";
   const [templates, setTemplates] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All categories");
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -29,7 +30,7 @@ export default function Templates() {
 
   const getAllTemplates = async () => {
     try {
-      const res = await axios.post("http://localhost:8000/getAllTemplates");
+      const res = await axios.post(`${url}/getAllTemplates`);
       setTemplates(res.data);
     } catch (e) {
       console.log(e);
@@ -38,7 +39,7 @@ export default function Templates() {
 
   const getSimilarTemplates = async (tags) => {
     try {
-      const res = await axios.post("http://localhost:8000/getSimilarTemplates", { tags });
+      const res = await axios.post(`${url}/getSimilarTemplates`, { tags });
       setSimilarTemplates(res.data);
       setCurrentSimilarIndex(0);
     } catch (e) {
@@ -79,7 +80,7 @@ export default function Templates() {
 
   const handleAddToStarred = async (template) => {
     try {
-      const res = await axios.post("http://localhost:8000/addToStarredCollection", { email, templateData: template });
+      const res = await axios.post(`${url}/addToStarredCollection`, { email, templateData: template });
       if (res.status === 201) {
         setStarredTemplates((prev) => new Set(prev).add(template._id));
         toast.success("Starred...⭐");
@@ -92,7 +93,7 @@ export default function Templates() {
 
   const handleRemoveStar = async (template) => {
     try {
-      const res = await axios.post("http://localhost:8000/removeToStarredCollection", { email, templateData: template });
+      const res = await axios.post(`${url}/removeToStarredCollection`, { email, templateData: template });
       if (res.status === 201) {
         setStarredTemplates((prev) => {
           const newSet = new Set(prev);
@@ -167,7 +168,7 @@ export default function Templates() {
             className="bg-gray-100 shadow-md rounded-lg m-4 w-64 h-96 flex-shrink-0 flex items-center justify-center relative group"
             onClick={() => openModal(template)}
           >
-            <img src={`http://localhost:8000/${template.imageUrl}`} alt={template.title} className="w-full rounded-lg h-full object-cover" />
+            <img src={`${url}/${template.imageUrl}`} alt={template.title} className="w-full rounded-lg h-full object-cover" />
             <div className='absolute top-4 right-4 w-8 h-8 rounded-md flex items-center justify-center bg-gray-100 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
               {starredTemplates.has(template._id) ? (
                 <FaStar className='text-xl text-cyan-700' onClick={(e) => { e.stopPropagation(); handleRemoveStar(template); }} />
@@ -225,7 +226,7 @@ export default function Templates() {
                 </div>
               </div>
               <div className='flex lg:flex-col items-center'>
-                <img src={`http://localhost:8000/${previewTemplate.imageUrl}`} alt={previewTemplate.title} className="w-64 h-96 md:w-[260px] md:h-[360px] border rounded-lg" />
+                <img src={`${url}/${previewTemplate.imageUrl}`} alt={previewTemplate.title} className="w-64 h-96 md:w-[260px] md:h-[360px] border rounded-lg" />
                 <FaAngleRight className='text-cyan-600 text-3xl rounded-lg mt-4 md:mt-0' onClick={handleNextTemplate} />
               </div>
             </div>
@@ -235,7 +236,7 @@ export default function Templates() {
               <div className="flex overflow-x-auto space-x-4">
                 {similarTemplates.map(template => (
                   <div key={template._id} className="bg-gray-100 shadow-md rounded-lg w-60 h-80 flex-shrink-0 flex items-center justify-center relative">
-                    <img src={`http://localhost:8000/${template.imageUrl}`} alt={template.title} className="w-full rounded-lg h-full object-cover" />
+                    <img src={`${url}/${template.imageUrl}`} alt={template.title} className="w-full rounded-lg h-full object-cover" />
                     <div className='absolute top-4 right-4 w-8 h-8 rounded-md flex items-center justify-center bg-gray-100 cursor-pointer' onClick={(e) => { e.stopPropagation(); handleAddToStarred(template); }}>
                       <CiStar className='text-2xl text-cyan-700' />
                     </div>

@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 
 export default function Signup() {
     const navigate = useNavigate();
+    const url = "http://localhost:8000";
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -26,7 +27,7 @@ export default function Signup() {
             } else if (form.password !== form.repassword) {
                 toast.error("Passwords don't match");
             } else {
-                const response = await axios.post('http://localhost:8000/signup', { form });
+                const response = await axios.post(`${url}/signup`, { form });
 
                 if (response.data === 'exists') {
                     toast.error('Email already exists');

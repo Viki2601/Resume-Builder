@@ -23,6 +23,7 @@ export default function AdminAccount() {
     const [graphData, setGraphData] = useState([]);
     const [userGraphData, setUserGraphData] = useState([]);
     const [allUsers, setAllUsers] = useState("")
+    const url = "http://localhost:8000";
     const [formData, setFormData] = useState({
         title: "",
         imageUrl: null,
@@ -129,7 +130,7 @@ export default function AdminAccount() {
 
     const admin = async () => {
         try {
-            await axios.post("http://localhost:8000/userAccount", { cookieVal })
+            await axios.post(`${url}/userAccount`, { cookieVal })
                 .then(res => {
                     setAdminDetails(res.data);
                 }).catch(e => {
@@ -143,7 +144,7 @@ export default function AdminAccount() {
 
     const getAllUsers = async () => {
         try {
-            await axios.post("http://localhost:8000/getAllUsers")
+            await axios.post(`${url}/getAllUsers`)
                 .then(res => {
                     setAllUsers(res.data);
                 }).catch(e => {
@@ -167,7 +168,7 @@ export default function AdminAccount() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/updateAccount', formData, {
+            const response = await axios.post('`${url}/updateAccount', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -193,7 +194,7 @@ export default function AdminAccount() {
         uploadTemplate.append("imageUrl", formData.imageUrl);
         uploadTemplate.append("tags", JSON.stringify(selectedTags));
         try {
-            const res = await axios.post("http://localhost:8000/upload", uploadTemplate, { headers: { "Content-Type": "multipart/form-data" } });
+            const res = await axios.post(`${url}/upload`, uploadTemplate, { headers: { "Content-Type": "multipart/form-data" } });
             if (res.status === 201) {
                 getAllTemplates();
                 setSelectedTags([]);
@@ -209,7 +210,7 @@ export default function AdminAccount() {
 
     const getAllTemplates = async () => {
         try {
-            const res = await axios.post("http://localhost:8000/getAllTemplates");
+            const res = await axios.post(`${url}/getAllTemplates`);
             setTemplates(res.data);
         } catch (e) {
             console.log(e);
@@ -220,7 +221,7 @@ export default function AdminAccount() {
     const deleteTemplate = async (id) => {
         try {
             console.log("called")
-            const res = await axios.delete(`http://localhost:8000/deleteTemplateById/${id}`);
+            const res = await axios.delete(`${url}/deleteTemplateById/${id}`);
             if (res.status === 200) {
                 getAllTemplates();
                 toast.success("Template deleted successfully");
@@ -234,7 +235,7 @@ export default function AdminAccount() {
 
     const fetchGraphData = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/graphData");
+            const res = await axios.get(`${url}/graphData`);
             setGraphData(res.data);
         } catch (e) {
             console.log(e)
@@ -244,7 +245,7 @@ export default function AdminAccount() {
 
     const fetchUserGraphData = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/userGraphData");
+            const res = await axios.get(`${url}/userGraphData`);
             setUserGraphData(res.data);
         } catch (e) {
             console.log(e)
@@ -336,7 +337,7 @@ export default function AdminAccount() {
                                 {templates.length > 0 ? (
                                     templates.map(template => (
                                         <div key={template._id} className='flex-shrink-0 lg:flex-shrink p-5 w-[280px] h-[380px]'>
-                                            <img src={`http://localhost:8000/${template.imageUrl}`} alt='' className='w-full h-full object-cover rounded-md sha' />
+                                            <img src={`${url}/${template.imageUrl}`} alt='' className='w-full h-full object-cover rounded-md sha' />
                                         </div>
                                     ))
                                 ) : (
@@ -429,7 +430,7 @@ export default function AdminAccount() {
                                 {templates.length > 0 ? (
                                     templates.map(template => (
                                         <div key={template._id} className='w-full lg:h-[320px] rounded-md overflow-hidden border shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg relative'>
-                                            <img src={`http://localhost:8000/${template.imageUrl}`} alt='' className='w-full h-full object-cover' />
+                                            <img src={`${url}/${template.imageUrl}`} alt='' className='w-full h-full object-cover' />
                                             <div className='absolute top-4 right-4 w-6 h-6 rounded-md flex items-center justify-center bg-red-500 cursor-pointer' onClick={() => deleteTemplate(template._id)}>
                                                 <FaTrash className='text-xs text-white' />
                                             </div>
@@ -461,7 +462,7 @@ export default function AdminAccount() {
                                         {previewImage ? (
                                             <img className="rounded-full object-cover w-16 h-16 border" src={previewImage} alt="Profile" />
                                         ) : (
-                                            <img className="rounded-full object-cover w-16 h-16 border" src={`http://localhost:8000/${adminDetails.profilePictureUrl}`} alt="Profile" />
+                                            <img className="rounded-full object-cover w-16 h-16 border" src={`${url}/${adminDetails.profilePictureUrl}`} alt="Profile" />
                                         )}
                                     </div>
                                     <div className="flex justify-center items-center">

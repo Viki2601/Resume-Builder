@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login() {
+    const url = "http://localhost:8000";
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -18,7 +19,7 @@ export default function Login() {
     const submit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8000/login", { form })
+            await axios.post(`${url}/login`, { form })
                 .then(res => {
                     if (res.data === "loginpass") {
                         Cookies.set("email", form.email, { expires: 7 });
