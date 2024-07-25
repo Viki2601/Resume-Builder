@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login() {
-    const url = "https://resume-builder-backend-1qao.onrender.com";
+    const url = "https://resume-builder-server-ea28.onrender.com";
     const [form, setForm] = useState({
         email: "",
         password: ""
