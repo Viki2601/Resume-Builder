@@ -23,7 +23,7 @@ export default function AdminAccount() {
     const [graphData, setGraphData] = useState([]);
     const [userGraphData, setUserGraphData] = useState([]);
     const [allUsers, setAllUsers] = useState("")
-    const url = "https://resume-builder-backend-1qao.onrender.com";
+    const url = "https://resume-builder-server-ea28.onrender.com";
     const [formData, setFormData] = useState({
         title: "",
         imageUrl: null,
