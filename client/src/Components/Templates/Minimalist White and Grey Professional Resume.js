@@ -17,6 +17,7 @@ export default function MinimalistWhiteandGreyProfessionalResume({ data }) {
     const navigate = useNavigate();
     const [isEditing, setIsEditing] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const url = "https://resume-builder-server-ea28.onrender.com";
 
 
 
@@ -118,7 +119,7 @@ export default function MinimalistWhiteandGreyProfessionalResume({ data }) {
             formDataToSend.append("skills", JSON.stringify(skills));
             formDataToSend.append("languages", JSON.stringify(languages));
 
-            await axios.post('http://localhost:8000/saveToDownload', formDataToSend, {
+            await axios.post(`${url}/saveToDownload`, formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
