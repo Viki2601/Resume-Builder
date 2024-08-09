@@ -331,7 +331,7 @@ export default function AdminAccount() {
                                 <GraphUsers data={userGraphData} />
                             </div>
                         </div>
-                        <div className='mt-10 lg:w-1/2 h-[420px] lg:h-[784px] overflow-y-auto bg-gradient-to-br from-gray-200 to-zinc-800 opacity-95 p-4 rounded-md'>
+                        <div className='mt-10 lg:w-1/2 h-[420px] lg:h-[784px] overflow-y-auto bg-gradient-to-br from-gray-200 to-zinc-800 opacity-95 py-4 rounded-md'>
                             <h1 className='text-2xl font-raleway font-bold text-center'>Templates</h1>
                             <div className='w-full flex lg:grid lg:grid-cols-2 gap-4 overflow-x-auto'>
                                 {templates.length > 0 ? (
