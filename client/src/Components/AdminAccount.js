@@ -312,7 +312,7 @@ export default function AdminAccount() {
                                 <div className="w-full lg:w-auto flex items-center text-gray-900 font-semibold border shadow-md rounded p-4">
                                     <FaUser className='mr-2 text-cyan-700 text-3xl' />
                                     <div className='flex flex-col ml-2'>
-                                        <h1 className='text-sm uppercase font-bold'>Total Usexrs</h1>
+                                        <h1 className='text-sm uppercase font-bold'>Total Users</h1>
                                         <div className='text-md uppercase font-bold font-raleway'>{allUsers.length}</div>
                                     </div>
                                 </div>
